@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"sort"
 	"strconv"
 )
 
@@ -34,8 +35,45 @@ func gatherNumbersFromUser() []int {
 	return nums
 }
 
+func calcMean(nums []int) float64 {
+	var total int
+	for _, value := range nums {
+		total += value
+	}
+	return float64(total / len(nums))
+}
+
+func calcMedian(nums []int) float64 {
+	var median float64
+
+	// Sort the numbers
+	sort.Ints(nums)
+
+	if len(nums)%2 == 0 {
+		// Even
+		indexTargetLower := int((len(nums) - 1) / 2)
+		indexTargetUpper := int((len(nums)-1)/2) + 1
+		numLower := nums[indexTargetLower]
+		numUpper := nums[indexTargetUpper]
+		median = float64((numUpper + numLower) / 2)
+	} else {
+		// Odd
+		indexTarget := int(len(nums) / 2)
+		median = float64(nums[indexTarget])
+	}
+
+	return median
+}
+
 func main() {
 	userNums := gatherNumbersFromUser()
 
-	fmt.Println(userNums)
+	mean := calcMean(userNums)
+	fmt.Println("Mean:", mean)
+
+	median := calcMedian(userNums)
+	fmt.Println("Median:", median)
 }
+
+// 10 15 20 25 30 35
+//  0  1  2  3  4  5
