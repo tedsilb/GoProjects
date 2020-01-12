@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"os"
 	"sort"
 	"strconv"
@@ -50,9 +51,7 @@ func calcMedian(nums []int) float64 {
 	if len(nums)%2 == 0 {
 		// Even
 		indexTargetLower := int((len(nums) - 1) / 2)
-		numLower := nums[indexTargetLower]
-		numUpper := nums[indexTargetLower + 1]
-		return float64(numUpper+numLower) / 2.0
+		return float64(nums[indexTargetLower+1]+nums[indexTargetLower]) / 2.0
 	}
 
 	// Odd
@@ -60,12 +59,26 @@ func calcMedian(nums []int) float64 {
 	return float64(nums[indexTarget])
 }
 
+func calcVariance(nums []int) float64 {
+	mean := calcMean(nums)
+
+	sqDiffs := make([]int, 0)
+	for _, value := range nums {
+		sqDiffs = append(sqDiffs, int(math.Pow(float64(value)-mean, 2.0)))
+	}
+
+	return calcMean(sqDiffs)
+}
+
+func calcStDev(nums []int) float64 {
+	return math.Pow(calcVariance(nums), 0.5)
+}
+
 func main() {
 	userNums := gatherNumbersFromUser()
 
-	mean := calcMean(userNums)
-	fmt.Println("Mean:", mean)
-
-	median := calcMedian(userNums)
-	fmt.Println("Median:", median)
+	fmt.Println("Mean:", calcMean(userNums))
+	fmt.Println("Median:", calcMedian(userNums))
+	fmt.Println("Variance:", calcVariance(userNums))
+	fmt.Println("Standard Deviation:", calcStDev(userNums))
 }
