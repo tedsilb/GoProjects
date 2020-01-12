@@ -1,0 +1,2 @@
+# GoProjects
+Various Go projects
