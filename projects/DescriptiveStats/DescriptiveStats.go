@@ -74,6 +74,10 @@ func calcStDev(nums []int) float64 {
 	return math.Pow(calcVariance(nums), 0.5)
 }
 
+func calcStErr(nums []int) float64 {
+	return calcStDev(nums) / float64(len(nums))
+}
+
 func calcMin(nums []int) int {
 	min := math.MaxInt8
 	for _, value := range nums {
@@ -101,6 +105,7 @@ func main() {
 	fmt.Println("Median:", calcMedian(userNums))
 	fmt.Println("Variance:", calcVariance(userNums))
 	fmt.Println("Standard Deviation:", calcStDev(userNums))
+	fmt.Println("Standard Error:", calcStErr(userNums))
 	fmt.Println("Min:", calcMin(userNums))
 	fmt.Println("Max:", calcMax(userNums))
 }
