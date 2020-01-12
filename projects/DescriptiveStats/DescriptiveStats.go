@@ -98,6 +98,14 @@ func calcMax(nums []int) int {
 	return max
 }
 
+func calcLowerBound(nums []int, tStat float64) float64 {
+	return calcMean(nums) - (tStat * calcStErr(nums))
+}
+
+func calcUpperBound(nums []int, tStat float64) float64 {
+	return calcMean(nums) + (tStat * calcStErr(nums))
+}
+
 func main() {
 	userNums := gatherNumbersFromUser()
 
@@ -108,4 +116,7 @@ func main() {
 	fmt.Println("Standard Error:", calcStErr(userNums))
 	fmt.Println("Min:", calcMin(userNums))
 	fmt.Println("Max:", calcMax(userNums))
+	fmt.Println("95% Confidence Interval:")
+	fmt.Println("Lower bound:", calcLowerBound(userNums, 1.95996))
+	fmt.Println("Upper bound:", calcUpperBound(userNums, 1.95996))
 }
