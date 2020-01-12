@@ -50,9 +50,8 @@ func calcMedian(nums []int) float64 {
 	if len(nums)%2 == 0 {
 		// Even
 		indexTargetLower := int((len(nums) - 1) / 2)
-		indexTargetUpper := int((len(nums)-1)/2) + 1
 		numLower := nums[indexTargetLower]
-		numUpper := nums[indexTargetUpper]
+		numUpper := nums[indexTargetLower + 1]
 		return float64(numUpper+numLower) / 2.0
 	}
 
