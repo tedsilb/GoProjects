@@ -53,7 +53,7 @@ func calcMedian(nums []int) float64 {
 		indexTargetUpper := int((len(nums)-1)/2) + 1
 		numLower := nums[indexTargetLower]
 		numUpper := nums[indexTargetUpper]
-		return float64((numUpper + numLower) / 2)
+		return float64(numUpper+numLower) / 2.0
 	}
 
 	// Odd
