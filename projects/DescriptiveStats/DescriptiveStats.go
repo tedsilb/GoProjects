@@ -44,8 +44,6 @@ func calcMean(nums []int) float64 {
 }
 
 func calcMedian(nums []int) float64 {
-	var median float64
-
 	// Sort the numbers
 	sort.Ints(nums)
 
@@ -55,14 +53,12 @@ func calcMedian(nums []int) float64 {
 		indexTargetUpper := int((len(nums)-1)/2) + 1
 		numLower := nums[indexTargetLower]
 		numUpper := nums[indexTargetUpper]
-		median = float64((numUpper + numLower) / 2)
-	} else {
-		// Odd
-		indexTarget := int(len(nums) / 2)
-		median = float64(nums[indexTarget])
+		return float64((numUpper + numLower) / 2)
 	}
 
-	return median
+	// Odd
+	indexTarget := int(len(nums) / 2)
+	return float64(nums[indexTarget])
 }
 
 func main() {
@@ -74,6 +70,3 @@ func main() {
 	median := calcMedian(userNums)
 	fmt.Println("Median:", median)
 }
-
-// 10 15 20 25 30 35
-//  0  1  2  3  4  5
