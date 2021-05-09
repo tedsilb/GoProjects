@@ -11,11 +11,19 @@ type Node struct {
 	next  *Node
 }
 
+func (n Node) String() string {
+	return fmt.Sprintf("Node(%s)", n.value)
+}
+
 /* Implementation of a singly-linked list. */
 type LinkedList struct {
 	first  *Node
 	last   *Node
 	Length uint32
+}
+
+func (l LinkedList) String() string {
+	return fmt.Sprintf("LinkedList(Length=%d)", l.Length)
 }
 
 /* Add a value to the end of the list. */
@@ -55,8 +63,18 @@ func (l *LinkedList) AddFront(value string) {
 /* Get the value at the provided index. */
 func (l *LinkedList) Get(index int) (r *string, e error) {
 	// TODO: make negative indexing work
+	node, err := l.get(index)
+	if err != nil {
+		return nil, err
+	}
+	return &node.value, nil
+}
+
+/* Get the node at the provided index. */
+func (l *LinkedList) get(index int) (r *Node, e error) {
+	// TODO: make negative indexing work
 	if index == 0 {
-		return &l.first.value, nil
+		return l.first, nil
 	}
 
 	curr := l.first
@@ -67,5 +85,50 @@ func (l *LinkedList) Get(index int) (r *string, e error) {
 		curr = curr.next
 	}
 
-	return &curr.value, nil
+	return curr, nil
+}
+
+/* Delete the node at the provided index. */
+func (l *LinkedList) Delete(index int) error {
+	// TODO: make negative indexing work
+	if l.first == nil || l.last == nil {
+		return fmt.Errorf("element %d does not exist in the list (list is empty)", index)
+	}
+
+	if index == 0 {
+		if l.first.next == nil {
+			if *l.last == *l.first {
+				l.last = nil
+			}
+			l.first = nil
+		} else {
+			l.first = l.first.next
+		}
+
+	} else if index == int(l.Length-1) {
+		secondLast, err := l.get(int(l.Length - 2))
+		if err != nil {
+			return fmt.Errorf("unable to retrieve element %d from the list "+
+				"(this should never happen)", l.Length-2)
+		}
+
+		l.last = secondLast
+		secondLast.next = nil
+
+	} else {
+		var prev *Node
+		curr := l.first
+		for i := 0; i < index; i++ {
+			if curr.next == nil {
+				return fmt.Errorf("element %d does not exist in the list", i)
+			}
+			prev = curr
+			curr = curr.next
+		}
+
+		prev.next = curr.next
+	}
+
+	l.Length--
+	return nil
 }
