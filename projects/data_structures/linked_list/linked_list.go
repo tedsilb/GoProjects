@@ -26,7 +26,7 @@ func (l LinkedList) String() string {
 	return fmt.Sprintf("LinkedList(Length=%d)", l.Length)
 }
 
-/* Add a value to the end of the list. */
+/* Add a value to the end of the list. O(1) complexity. */
 func (l *LinkedList) Add(value string) {
 	node := &Node{value: value}
 
@@ -43,7 +43,7 @@ func (l *LinkedList) Add(value string) {
 	l.Length++
 }
 
-/* Add a value to the front of the list. */
+/* Add a value to the front of the list. O(1) complexity. */
 func (l *LinkedList) AddFront(value string) {
 	node := &Node{value: value}
 
@@ -60,7 +60,7 @@ func (l *LinkedList) AddFront(value string) {
 	l.Length++
 }
 
-/* Get the value at the provided index. */
+/* Get the value at the provided index. O(n) complexity. */
 func (l *LinkedList) Get(index int) (r *string, e error) {
 	node, err := l.get(index)
 	if err != nil {
@@ -86,7 +86,7 @@ func (l *LinkedList) get(index int) (r *Node, e error) {
 	return curr, nil
 }
 
-/* Delete the node at the provided index. */
+/* Delete the node at the provided index. O(n) complexity. */
 func (l *LinkedList) Delete(index int) error {
 	if l.first == nil || l.last == nil {
 		return fmt.Errorf("element %d does not exist in the list (list is empty)", index)
