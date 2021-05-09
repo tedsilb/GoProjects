@@ -59,13 +59,13 @@ func (l *LinkedList) Get(index int) (r *string, e error) {
 		return &l.first.value, nil
 	}
 
-	prev := l.first
+	curr := l.first
 	for i := 0; i < index; i++ {
-		if prev.next == nil {
+		if curr.next == nil {
 			return nil, fmt.Errorf("element %d does not exist in the list", i)
 		}
-		prev = prev.next
+		curr = curr.next
 	}
 
-	return &prev.value, nil
+	return &curr.value, nil
 }
