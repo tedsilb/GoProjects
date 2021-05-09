@@ -113,7 +113,7 @@ func TestAddFront_GetIndex3(t *testing.T) {
 	}
 }
 
-func TestDeleteFirstElement(t *testing.T) {
+func TestDelete_FirstElement(t *testing.T) {
 	l := LinkedList{}
 	l.Add("item0")
 	l.Add("item1")
@@ -137,7 +137,7 @@ func TestDeleteFirstElement(t *testing.T) {
 	}
 }
 
-func TestDeleteOnlyElementOfList(t *testing.T) {
+func TestDelete_OnlyElementOfList(t *testing.T) {
 	l := LinkedList{}
 	l.Add("item0")
 
@@ -154,7 +154,7 @@ func TestDeleteOnlyElementOfList(t *testing.T) {
 	}
 }
 
-func TestDeleteMiddleElement(t *testing.T) {
+func TestDelete_MiddleElement(t *testing.T) {
 	l := LinkedList{}
 	l.Add("item0")
 	l.Add("item1")
@@ -175,7 +175,7 @@ func TestDeleteMiddleElement(t *testing.T) {
 	}
 }
 
-func TestDeleteLastElement(t *testing.T) {
+func TestDelete_LastElement(t *testing.T) {
 	l := LinkedList{}
 	l.Add("item0")
 	l.Add("item1")

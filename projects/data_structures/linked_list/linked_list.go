@@ -62,7 +62,6 @@ func (l *LinkedList) AddFront(value string) {
 
 /* Get the value at the provided index. */
 func (l *LinkedList) Get(index int) (r *string, e error) {
-	// TODO: make negative indexing work
 	node, err := l.get(index)
 	if err != nil {
 		return nil, err
@@ -72,7 +71,6 @@ func (l *LinkedList) Get(index int) (r *string, e error) {
 
 /* Get the node at the provided index. */
 func (l *LinkedList) get(index int) (r *Node, e error) {
-	// TODO: make negative indexing work
 	if index == 0 {
 		return l.first, nil
 	}
@@ -90,7 +88,6 @@ func (l *LinkedList) get(index int) (r *Node, e error) {
 
 /* Delete the node at the provided index. */
 func (l *LinkedList) Delete(index int) error {
-	// TODO: make negative indexing work
 	if l.first == nil || l.last == nil {
 		return fmt.Errorf("element %d does not exist in the list (list is empty)", index)
 	}
