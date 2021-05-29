@@ -5,7 +5,7 @@ import (
 )
 
 func TestLength_0(t *testing.T) {
-	l := LinkedList{}
+	l := &LinkedList{}
 
 	actual := l.Length
 
@@ -15,7 +15,7 @@ func TestLength_0(t *testing.T) {
 }
 
 func TestLength_1_Add(t *testing.T) {
-	l := LinkedList{}
+	l := &LinkedList{}
 	l.Add("item0")
 
 	actual := l.Length
@@ -26,7 +26,7 @@ func TestLength_1_Add(t *testing.T) {
 }
 
 func TestLength_1_AddFront(t *testing.T) {
-	l := LinkedList{}
+	l := &LinkedList{}
 	l.AddFront("item0")
 
 	actual := l.Length
@@ -37,7 +37,7 @@ func TestLength_1_AddFront(t *testing.T) {
 }
 
 func TestLength_5(t *testing.T) {
-	l := LinkedList{}
+	l := &LinkedList{}
 	l.Add("item0")
 	l.AddFront("item1")
 	l.Add("item2")
@@ -52,7 +52,7 @@ func TestLength_5(t *testing.T) {
 }
 
 func TestAdd_GetIndex0(t *testing.T) {
-	l := LinkedList{}
+	l := &LinkedList{}
 	l.Add("item")
 
 	actual, err := l.Get(0)
@@ -66,7 +66,7 @@ func TestAdd_GetIndex0(t *testing.T) {
 }
 
 func TestAdd_GetIndex3(t *testing.T) {
-	l := LinkedList{}
+	l := &LinkedList{}
 	l.Add("item0")
 	l.Add("item1")
 	l.Add("item2")
@@ -83,7 +83,7 @@ func TestAdd_GetIndex3(t *testing.T) {
 }
 
 func TestAddFront_GetIndex0(t *testing.T) {
-	l := LinkedList{}
+	l := &LinkedList{}
 	l.AddFront("item")
 
 	actual, err := l.Get(0)
@@ -97,7 +97,7 @@ func TestAddFront_GetIndex0(t *testing.T) {
 }
 
 func TestAddFront_GetIndex3(t *testing.T) {
-	l := LinkedList{}
+	l := &LinkedList{}
 	l.AddFront("item0")
 	l.AddFront("item1")
 	l.AddFront("item2")
@@ -114,7 +114,7 @@ func TestAddFront_GetIndex3(t *testing.T) {
 }
 
 func TestDelete_FirstElement(t *testing.T) {
-	l := LinkedList{}
+	l := &LinkedList{}
 	l.Add("item0")
 	l.Add("item1")
 	l.Add("item2")
@@ -138,7 +138,7 @@ func TestDelete_FirstElement(t *testing.T) {
 }
 
 func TestDelete_OnlyElementOfList(t *testing.T) {
-	l := LinkedList{}
+	l := &LinkedList{}
 	l.Add("item0")
 
 	err := l.Delete(0)
@@ -155,7 +155,7 @@ func TestDelete_OnlyElementOfList(t *testing.T) {
 }
 
 func TestDelete_MiddleElement(t *testing.T) {
-	l := LinkedList{}
+	l := &LinkedList{}
 	l.Add("item0")
 	l.Add("item1")
 	l.Add("item2")
@@ -176,7 +176,7 @@ func TestDelete_MiddleElement(t *testing.T) {
 }
 
 func TestDelete_LastElement(t *testing.T) {
-	l := LinkedList{}
+	l := &LinkedList{}
 	l.Add("item0")
 	l.Add("item1")
 	l.Add("item2")
@@ -192,7 +192,7 @@ func TestDelete_LastElement(t *testing.T) {
 }
 
 func BenchmarkAdd(b *testing.B) {
-	l := LinkedList{}
+	l := &LinkedList{}
 
 	for n := 0; n < b.N; n++ {
 		l.Add("item")
@@ -200,7 +200,7 @@ func BenchmarkAdd(b *testing.B) {
 }
 
 func BenchmarkAddFront(b *testing.B) {
-	l := LinkedList{}
+	l := &LinkedList{}
 
 	for n := 0; n < b.N; n++ {
 		l.AddFront("item")
@@ -208,7 +208,7 @@ func BenchmarkAddFront(b *testing.B) {
 }
 
 func BenchmarkGet(b *testing.B) {
-	l := LinkedList{}
+	l := &LinkedList{}
 
 	for n := 0; n < b.N; n++ {
 		l.Add("item")
