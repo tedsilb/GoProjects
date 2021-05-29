@@ -15,8 +15,8 @@ Projects are built using [Bazel](https://bazel.build).
 - To run a specific project:
   - `bazel run projects/{project} {args}`
 - For example:
-  - `bazel run projects/DescriptiveStats`
+  - `bazel run projects/descriptive_stats`
 
 Build rules are auto-generated using [Gazelle](https://github.com/bazelbuild/bazel-gazelle).
 
-To update build rules, run `bazel run //:gazelle`
+To update build rules, run `bazel run :gazelle`
