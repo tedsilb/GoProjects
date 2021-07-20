@@ -10,7 +10,6 @@ import (
 
 func main() {
 	fmt.Println("Simple calculator :)")
-	fmt.Println("Currently, only addition and subtraction are supported.")
 
 	scanner := bufio.NewScanner(os.Stdin)
 
