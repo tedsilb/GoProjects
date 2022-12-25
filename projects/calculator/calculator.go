@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	c "github.com/tedsilb/GoProjects/projects/calculator/calc_engine"
+	"github.com/tedsilb/GoProjects/projects/calculator/engine"
 )
 
 func main() {
@@ -22,7 +22,7 @@ func main() {
 			os.Exit(0)
 		}
 
-		result, err := c.Calculate(expr)
+		result, err := engine.Calculate(expr)
 		if err != nil {
 			fmt.Printf("Calculation error: %v\n", err)
 			continue

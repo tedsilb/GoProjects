@@ -1,4 +1,4 @@
-package calc_engine
+package engine
 
 import (
 	"fmt"

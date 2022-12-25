@@ -8,15 +8,9 @@ Various Go projects I work on from time to time.
 
 ## Building
 
-Projects are built using [Bazel](https://bazel.build).
-
 - To build all projects:
-  - `bazel build ...`
+  - `go build ./...`
 - To run a specific project:
-  - `bazel run projects/{project} {args}`
+  - `go run projects/{project}/{project}.go`
 - For example:
-  - `bazel run projects/descriptive_stats`
-
-Build rules are auto-generated using [Gazelle](https://github.com/bazelbuild/bazel-gazelle).
-
-To update build rules, run `bazel run :gazelle`
+  - `bazel run projects/calculator/caltulator.go`
