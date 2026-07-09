@@ -1,3 +1,3 @@
 module github.com/tedsilb/GoProjects
 
-go 1.26.2
+go 1.26.5
